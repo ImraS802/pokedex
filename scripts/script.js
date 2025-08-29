@@ -9,3 +9,16 @@ async function fetchDataPokemon() {
     console.log('Error fetching Pokemon data:', error);
   }
 }
+
+function init() {
+  renderPokemons('results', 'small_pk_cards');
+}
+
+function renderPokemons(pkCardSmall) {
+  let container = document.getElementById(pkCardSmall);
+  container.innerHTML = '';
+
+  for (let i = 0; i < results.length; i++) {
+    container.innerHTML += getHTMLForSmallPkCards(); // next step create in template.js html
+  }
+}
