@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./assets/icons/favicon.ico" type="image/ico" />
+    <link rel="icon" href="./assets/icons/favicon.png" type="image/ico" />
     <title>Pokedex</title>
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -15,12 +15,18 @@
     <script src="./scripts/template.js"></script>
 </head>
 
-<body onload="fetchDataPokemon()">
+<body onload="init()">
     <header></header>
-    <main>
-        <div id="small_pk_cards"></div>
-    </main>
-    <footer></footer>
+    <div class="content_limitation_main">
+        <main>
+            <div id="small_pk_cards"></div>
+        </main>
+    </div>
+    <footer>
+        <div class="legal-section">
+            <a href="./impressum.html" class="imprint" target="_blank">Impressum</a>
+        </div>
+    </footer>
 </body>
 
 </html>

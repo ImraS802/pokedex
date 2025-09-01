@@ -1,24 +1,54 @@
-async function fetchDataPokemon() {
+let namesPokemons = [];
+let dataPokemons = [];
+
+async function init() {
+  await fetchPokemonNames();
+  let dataListPokemons = await getDataOfPokemons(namesPokemons);
+  renderPkSmallCards(dataListPokemons);
+}
+
+async function fetchPokemonNames() {
   try {
     let response = await fetch(
       'https://pokeapi.co/api/v2/pokemon?limit=40&offset=0'
     );
     let responseAsJson = await response.json();
-    console.log(responseAsJson);
+    namesPokemons = responseAsJson.results;
+    renderPkSmallCards();
   } catch (error) {
-    console.log('Error fetching Pokemon data:', error);
+    console.log('Error fetching Pokemon names:', error);
   }
 }
 
-function init() {
-  renderPokemons('results', 'small_pk_cards');
+async function fetchPokemonDataList(pokemonUrl) {
+  try {
+    let response = await fetch(pokemonUrl);
+    let dataList = await response.json();
+    return dataList;
+  } catch (error) {
+    console.log('Error fetching Pokemon data list', error);
+  }
 }
 
-function renderPokemons(pkCardSmall) {
-  let container = document.getElementById(pkCardSmall);
-  container.innerHTML = '';
+async function renderPkSmallCards(dataPokemons) {
+  let smallCardsContainer = document.getElementById('small_pk_cards');
+  smallCardsContainer.innerHTML = '';
 
-  for (let i = 0; i < results.length; i++) {
-    container.innerHTML += getHTMLForSmallPkCards(); // next step create in template.js html
+  for (let i = 0; i < namesPokemons.length; i++) {
+    let singlePokemon = dataPokemons[i];
+    smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
   }
+}
+
+async function getDataOfPokemons(pokemonList) {
+  for (let i = 0; i < pokemonList.length; i++) {
+    let singlePokemon = pokemonList[i];
+    let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
+    console.log(dataSinglePokemon);
+    // console.log(dataSinglePokemon.sprites.front_default);
+
+    dataPokemons.push(dataSinglePokemon);
+  }
+
+  return dataPokemons;
 }
