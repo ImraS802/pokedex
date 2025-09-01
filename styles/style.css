@@ -2,9 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 80px;
+    padding: 30px 30px 60px 30px;
     align-items: center;
     flex-direction: column;
+    border: solid 2px #0b2555;
+    border-radius: 10px;
+    background-color: #1b53ba;
+    width: 180px;
+    height: auto;
 }
 
 #small_pk_cards {
@@ -13,6 +18,10 @@
     gap: 20px;
     justify-content: center;
     margin: 40px;
+}
+
+.pk_name::first-letter {
+    text-transform: uppercase;
 }
 
 .image_single_pk {
@@ -37,14 +46,11 @@
     flex: 1;
 }
 
-.pk_name {
-    display: flex;
-    justify-content: center;
-}
-
 .id_name {
     display: flex;
-    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .legal_link_style {

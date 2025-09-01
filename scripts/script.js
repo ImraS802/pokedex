@@ -14,7 +14,6 @@ async function fetchPokemonNames() {
     );
     let responseAsJson = await response.json();
     namesPokemons = responseAsJson.results;
-    renderPkSmallCards();
   } catch (error) {
     console.log('Error fetching Pokemon names:', error);
   }
@@ -30,7 +29,7 @@ async function fetchPokemonDataList(pokemonUrl) {
   }
 }
 
-async function renderPkSmallCards(dataPokemons) {
+async function renderPkSmallCards() {
   let smallCardsContainer = document.getElementById('small_pk_cards');
   smallCardsContainer.innerHTML = '';
 
@@ -44,8 +43,8 @@ async function getDataOfPokemons(pokemonList) {
   for (let i = 0; i < pokemonList.length; i++) {
     let singlePokemon = pokemonList[i];
     let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
-    console.log(dataSinglePokemon);
     // console.log(dataSinglePokemon.sprites.front_default);
+    // console.log(dataPokemons[i].types[i].type.name);
 
     dataPokemons.push(dataSinglePokemon);
   }
