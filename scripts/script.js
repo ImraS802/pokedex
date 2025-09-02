@@ -5,27 +5,49 @@ const limit = 20;
 const maxPokemons = 40;
 
 async function init() {
-  await loadNextPokemons();
+  await fetchNextBatch();
+  renderPkSmallCards(dataPokemons);
+}
+
+function showLoadingState(button) {
+  button.disabled = true;
+  button.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
+                        alt="snail icon" 
+                        class="snail_img"></div>`;
+}
+
+function resetButtonState(button) {
+  button.disabled = false;
+  button.innerHTML = 'Load More';
+}
+
+function disableButtonNoMorePokemons(button) {
+  button.disabled = true;
+  button.innerHTML = 'No more Pokémons left';
+}
+
+async function fetchNextBatch() {
+  offset += limit;
+  await fetchPokemonNames();
+  await getDataOfPokemons(namesPokemons);
+}
+
+function createDelay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function loadNextPokemons() {
   let loadMoreButton = document.getElementById('loadMoreBtn');
 
-  loadMoreButton.disabled = true;
-  loadMoreButton.innerHTML = `<span class="spinner"></span> Loading...`;
+  showLoadingState(loadMoreButton);
 
-  offset += limit;
-
-  await fetchPokemonNames();
-  let dataListPokemons = await getDataOfPokemons(namesPokemons);
-  renderPkSmallCards(dataListPokemons);
+  await Promise.all([fetchNextBatch(), createDelay(3000)]);
+  renderPkSmallCards(dataPokemons);
 
   if (dataPokemons.length >= maxPokemons) {
-    loadMoreButton.disabled = true;
-    loadMoreButton.innerHTML = 'No more Pokémons left';
+    disableButtonNoMorePokemons(loadMoreButton);
   } else {
-    loadMoreButton.disabled = false;
-    loadMoreButton.innerHTML = 'Load More';
+    resetButtonState(loadMoreButton);
   }
 }
 

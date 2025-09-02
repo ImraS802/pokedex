@@ -82,6 +82,16 @@
     background-color: #16F529;
 }
 
+.type_icon {
+    border-radius: 50%;
+}
+
+.snail_img {
+    width: 40px;
+    height: auto;
+    background-color: transparent;
+}
+
 .pk_name::first-letter {
     text-transform: uppercase;
 }
@@ -123,6 +133,14 @@
     animation: spin 1s linear infinite;
     display: inline-block;
     vertical-align: middle;
+}
+
+.container_spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
 }
 
 @keyframes spin {
