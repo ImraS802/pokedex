@@ -1,7 +1,13 @@
 let namesPokemons = [];
 let dataPokemons = [];
+let offset = 0;
+const limit = 20;
 
 async function init() {
+  await loadNextPokemons();
+}
+
+async function loadNextPokemons() {
   await fetchPokemonNames();
   let dataListPokemons = await getDataOfPokemons(namesPokemons);
   renderPkSmallCards(dataListPokemons);
@@ -10,22 +16,16 @@ async function init() {
 async function fetchPokemonNames() {
   try {
     let response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon?limit=40&offset=0'
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
     );
     let responseAsJson = await response.json();
-    namesPokemons = responseAsJson.results;
+
+    for (let i = 0; i < responseAsJson.results.length; i++) {
+      namesPokemons.push(responseAsJson.results[i]);
+    }
+    offset += limit;
   } catch (error) {
     console.log('Error fetching Pokemon names:', error);
-  }
-}
-
-async function fetchPokemonDataList(pokemonUrl) {
-  try {
-    let response = await fetch(pokemonUrl);
-    let dataList = await response.json();
-    return dataList;
-  } catch (error) {
-    console.log('Error fetching Pokemon data list', error);
   }
 }
 
@@ -36,6 +36,16 @@ async function renderPkSmallCards() {
   for (let i = 0; i < namesPokemons.length; i++) {
     let singlePokemon = dataPokemons[i];
     smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
+  }
+}
+
+async function fetchPokemonDataList(pokemonUrl) {
+  try {
+    let response = await fetch(pokemonUrl);
+    let dataList = await response.json();
+    return dataList;
+  } catch (error) {
+    console.log('Error fetching Pokemon data list', error);
   }
 }
 

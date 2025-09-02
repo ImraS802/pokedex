@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/assets.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/db.js"></script>
     <script src="./scripts/script.js"></script>
     <script src="./scripts/template.js"></script>
 </head>
@@ -20,6 +19,9 @@
     <div class="content_limitation_main">
         <main>
             <div id="small_pk_cards"></div>
+            <div class="load_more_container">
+                <button onclick="loadNextPokemons()" class="load_more_btn" id="loadMoreBtn">Load More</button>
+            </div>
         </main>
     </div>
     <footer>
