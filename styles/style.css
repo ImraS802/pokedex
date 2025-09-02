@@ -103,14 +103,13 @@
     transition: transform 200ms ease, box-shadow 200ms ease;
     box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.7);
     cursor: pointer;
-    width: 200px;
+    width: 300px;
     text-align: center;
     bottom: 30px;
 }
 
 .load_more_btn:disabled {
     background-color: grey;
-    /* different color while loading */
     cursor: not-allowed;
     opacity: 0.7;
 }

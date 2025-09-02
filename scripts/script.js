@@ -2,15 +2,31 @@ let namesPokemons = [];
 let dataPokemons = [];
 let offset = 0;
 const limit = 20;
+const maxPokemons = 40;
 
 async function init() {
   await loadNextPokemons();
 }
 
 async function loadNextPokemons() {
+  let loadMoreButton = document.getElementById('loadMoreBtn');
+
+  loadMoreButton.disabled = true;
+  loadMoreButton.innerHTML = `<span class="spinner"></span> Loading...`;
+
+  offset += limit;
+
   await fetchPokemonNames();
   let dataListPokemons = await getDataOfPokemons(namesPokemons);
   renderPkSmallCards(dataListPokemons);
+
+  if (dataPokemons.length >= maxPokemons) {
+    loadMoreButton.disabled = true;
+    loadMoreButton.innerHTML = 'No more Pokémons left';
+  } else {
+    loadMoreButton.disabled = false;
+    loadMoreButton.innerHTML = 'Load More';
+  }
 }
 
 async function fetchPokemonNames() {
@@ -23,7 +39,6 @@ async function fetchPokemonNames() {
     for (let i = 0; i < responseAsJson.results.length; i++) {
       namesPokemons.push(responseAsJson.results[i]);
     }
-    offset += limit;
   } catch (error) {
     console.log('Error fetching Pokemon names:', error);
   }
