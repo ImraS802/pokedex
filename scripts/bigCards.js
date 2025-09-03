@@ -3,7 +3,6 @@ let currentIndexOfPokemonBigCard = 0;
 function toggleOverlay(index = null) {
   let overlayRef = document.getElementById('overlay');
   let overlayImage = document.getElementById('overlayImage');
-  let overlayTitle = document.getElementById('overlayTitle');
 
   if (index !== null) {
     currentIndexOfPokemonBigCard = index;
@@ -13,7 +12,11 @@ function toggleOverlay(index = null) {
     overlayRef.classList.remove('d_none');
     overlayImage.src =
       singlePokemonBigCard.sprites.other.dream_world.front_default;
-    overlayTitle.textContent = singlePokemonBigCard.name;
+    document.getElementById('overlayName').textContent =
+      singlePokemonBigCard.name;
+    document.getElementById(
+      'overlayId'
+    ).textContent = `#${singlePokemonBigCard.id}`;
     disableBackgroundScrolling();
 
     document.addEventListener('keydown', escCloseOverlay);
@@ -51,12 +54,14 @@ function showPreviousImage() {
 
 function updateOverlayContent() {
   let overlayImage = document.getElementById('overlayImage');
-  let overlayTitle = document.getElementById('overlayTitle');
+  let overlayName = document.getElementById('overlayName'); // shows name of Pk on top of card
+  let overlayId = document.getElementById('overlayId'); // shows Id of Pk on top of card
 
   let singlePokemon = dataPokemons[currentIndexOfPokemonBigCard];
 
   overlayImage.src = singlePokemon.sprites.other.dream_world.front_default;
-  overlayTitle.textContent = singlePokemon.name;
+  overlayName.textContent = singlePokemon.name;
+  overlayId.textContent = `#${singlePokemon.id}`;
 }
 
 function disableBackgroundScrolling() {
