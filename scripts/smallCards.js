@@ -67,7 +67,7 @@ async function fetchPokemonNames() {
 }
 
 async function renderPkSmallCards() {
-  let smallCardsContainer = document.getElementById('small_pk_cards');
+  let smallCardsContainer = document.getElementById('smallPkCards');
   smallCardsContainer.innerHTML = '';
 
   for (let i = 0; i < namesPokemons.length; i++) {

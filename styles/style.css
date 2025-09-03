@@ -18,7 +18,7 @@
     cursor: pointer;
 }
 
-#small_pk_cards {
+#smallPkCards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -334,14 +334,28 @@ main {
 
 .arrow_previous,
 .arrow_next {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
 }
 
+.overlay_stats {
+    margin-top: 20px;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    text-align: left;
+}
 
+.stats_text {
+    color: white;
+}
 
-
-
+.stats_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
 
 

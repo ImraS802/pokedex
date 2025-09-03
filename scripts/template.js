@@ -29,3 +29,14 @@ function getTypesHTML(singlePokemon) {
   }
   return typesHTML.trim();
 }
+
+function getHTMLForOverlayStats(stats) {
+  return `
+    <div class="stats_container">
+      <div class="stats_text"><strong>Health Points:</strong> ${stats.hp}</div>
+      <div class="stats_text"><strong>Attack:</strong> ${stats.attack}</div>
+      <div class="stats_text"><strong>Defense:</strong> ${stats.defense}</div>
+      <div class="stats_text"><strong>Speed:</strong> ${stats.speed}</div>
+    </div>
+  `;
+}
