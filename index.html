@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./styles/assets.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/smallCards.js"></script>
+    <script src="./scripts/bigCards.js"></script>
     <script src="./scripts/template.js"></script>
 </head>
 
@@ -19,6 +20,23 @@
     <div class="content_limitation_main">
         <main>
             <div id="small_pk_cards"></div>
+
+            <div id="overlay" class="overlay d_none" onclick="toggleOverlay()">
+                <div class="overlay_card" onclick="event.stopPropagation()">
+                    <button class="close_button" onclick="toggleOverlay()">✕</button>
+                    <div id="overlay_dialog" class="overlay_dialog">
+                        <img id="overlayImage" class="overlay_image" src="" alt="Enlarged image">
+                        <p id="overlayTitle" class="overlay_title"></p>
+                        <div class="sticky_arrows">
+                            <button onclick="showPreviousImage()" class="button_previous"><img class="arrow_previous"
+                                    src="./assets/icons/arrow_circle_left.svg" alt="Show previous card"></button>
+                            <button onclick="showNextImage()" class="button_next"><img class="arrow_next"
+                                    src="./assets/icons/arrow_circle_right.svg" alt="Show next card"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="load_more_container">
                 <button onclick="loadNextPokemons()" class="load_more_btn" id="loadMoreBtn">Load More</button>
             </div>

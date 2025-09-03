@@ -90,7 +90,7 @@ async function getDataOfPokemons(pokemonList) {
   for (let i = 0; i < pokemonList.length; i++) {
     let singlePokemon = pokemonList[i];
     let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
-    // console.log(dataSinglePokemon.sprites.front_default);
+    // console.log(dataPokemons[i].sprites.other.dream_world.front_default);
     // console.log(dataPokemons[i].types[i].type.name);
 
     dataPokemons.push(dataSinglePokemon);
