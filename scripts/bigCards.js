@@ -14,10 +14,12 @@ function toggleOverlay(index = null) {
     overlayImage.src =
       singlePokemonBigCard.sprites.other.dream_world.front_default;
     overlayTitle.textContent = singlePokemonBigCard.name;
+    disableBackgroundScrolling();
 
     document.addEventListener('keydown', escCloseOverlay);
   } else {
     overlayRef.classList.add('d_none');
+    enableBackgroundScrolling();
 
     document.removeEventListener('keydown', escCloseOverlay);
   }
@@ -55,4 +57,12 @@ function updateOverlayContent() {
 
   overlayImage.src = singlePokemon.sprites.other.dream_world.front_default;
   overlayTitle.textContent = singlePokemon.name;
+}
+
+function disableBackgroundScrolling() {
+  document.body.style.overflow = 'hidden';
+}
+
+function enableBackgroundScrolling() {
+  document.body.style.overflow = 'auto';
 }
