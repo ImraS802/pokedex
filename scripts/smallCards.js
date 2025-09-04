@@ -1,6 +1,6 @@
 let namesPokemons = [];
 let dataPokemons = [];
-let offset = 0;
+let startAt = 0;
 const limit = 20;
 const maxPokemons = 60;
 
@@ -9,31 +9,35 @@ async function init() {
   renderPkSmallCards(dataPokemons);
 }
 
-function showLoadingState(button) {
-  button.disabled = true;
-  button.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
+function showLoadingState(buttonForLoading) {
+  buttonForLoading.disabled = true;
+  buttonForLoading.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
                         alt="snail icon" 
                         class="snail_img"></div>`;
 }
 
-function resetButtonState(button) {
-  button.disabled = false;
-  button.innerHTML = 'Load More';
+function resetButtonState(buttonForLoading) {
+  buttonForLoading.disabled = false;
+  buttonForLoading.innerHTML = 'Load More';
 }
 
-function disableButtonNoMorePokemons(button) {
-  button.disabled = true;
-  button.innerHTML = 'No more Pokémons left';
+function disableButtonNoMorePokemons(buttonForLoading) {
+  buttonForLoading.disabled = true;
+  buttonForLoading.innerHTML = 'No more Pokémons left';
 }
 
 async function fetchNextBatch() {
   await fetchPokemonNames();
   await getDataOfPokemons(namesPokemons);
-  offset += limit;
+  startAt += limit;
 }
 
 function createDelay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve();
+    }, ms);
+  });
 }
 
 async function loadNextPokemons() {
@@ -54,7 +58,7 @@ async function loadNextPokemons() {
 async function fetchPokemonNames() {
   try {
     let response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${startAt}`
     );
     let responseAsJson = await response.json();
 
@@ -93,8 +97,6 @@ async function getDataOfPokemons(pokemonList) {
   for (let i = 0; i < newPokemons.length; i++) {
     let singlePokemon = newPokemons[i];
     let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
-    // console.log(dataPokemons[i].sprites.other.dream_world.front_default);
-    // console.log(dataPokemons[i].types[i].type.name);
 
     dataPokemons.push(dataSinglePokemon);
   }

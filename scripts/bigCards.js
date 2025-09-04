@@ -12,7 +12,6 @@ function toggleOverlay(index = null) {
 
     document.addEventListener('keydown', escCloseOverlay);
   } else {
-    // CLOSE overlay
     overlayRef.classList.add('d_none');
     enableBackgroundScrolling();
 
