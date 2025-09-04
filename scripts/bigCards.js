@@ -51,6 +51,8 @@ function updateOverlayContent() {
   let overlayStats = document.getElementById('overlayStats');
 
   let singlePokemon = dataPokemons[currentIndexOfPokemonBigCard];
+  let firstTypeColorBg = singlePokemon.types[0].type.name;
+  overlayImage.className = `overlay_image ${firstTypeColorBg}`;
 
   overlayImage.src = singlePokemon.sprites.other.dream_world.front_default;
   overlayName.textContent = singlePokemon.name;
