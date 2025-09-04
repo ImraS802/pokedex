@@ -49,6 +49,7 @@ function updateOverlayContent() {
   let overlayName = document.getElementById('overlayName');
   let overlayId = document.getElementById('overlayId');
   let overlayStats = document.getElementById('overlayStats');
+  let overlayTypes = document.getElementById('overlayTypes');
 
   let singlePokemon = dataPokemons[currentIndexOfPokemonBigCard];
   let firstTypeColorBg = singlePokemon.types[0].type.name;
@@ -59,8 +60,9 @@ function updateOverlayContent() {
   overlayId.textContent = `#${singlePokemon.id}`;
 
   let stats = getStats(singlePokemon);
-
   overlayStats.innerHTML = getHTMLForOverlayStats(stats);
+
+  overlayTypes.innerHTML = getTypesHTML(singlePokemon);
 }
 
 function getStats(singlePokemon) {

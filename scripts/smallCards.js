@@ -2,7 +2,7 @@ let namesPokemons = [];
 let dataPokemons = [];
 let offset = 0;
 const limit = 20;
-const maxPokemons = 40;
+const maxPokemons = 60;
 
 async function init() {
   await fetchNextBatch();
@@ -27,9 +27,9 @@ function disableButtonNoMorePokemons(button) {
 }
 
 async function fetchNextBatch() {
-  offset += limit;
   await fetchPokemonNames();
   await getDataOfPokemons(namesPokemons);
+  offset += limit;
 }
 
 function createDelay(ms) {
@@ -87,8 +87,11 @@ async function fetchPokemonDataList(pokemonUrl) {
 }
 
 async function getDataOfPokemons(pokemonList) {
-  for (let i = 0; i < pokemonList.length; i++) {
-    let singlePokemon = pokemonList[i];
+  let startIndex = dataPokemons.length;
+  let newPokemons = pokemonList.slice(startIndex);
+
+  for (let i = 0; i < newPokemons.length; i++) {
+    let singlePokemon = newPokemons[i];
     let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
     // console.log(dataPokemons[i].sprites.other.dream_world.front_default);
     // console.log(dataPokemons[i].types[i].type.name);
