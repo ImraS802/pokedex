@@ -1,3 +1,34 @@
+.logo {
+    width: 60px;
+    height: auto;
+}
+
+h1 {
+    color: white;
+    font-family: "Pokemon Solid";
+}
+
+.logo_title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 80px;
+}
+
+.text_block {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.header_text {
+    color: white;
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+    margin-left: 10px;
+}
+
 .single_pk_card_small {
     display: flex;
     flex-wrap: wrap;
@@ -133,6 +164,7 @@
     width: 300px;
     text-align: center;
     bottom: 30px;
+    font-size: 24px;
 }
 
 .load_more_btn:disabled {
@@ -242,8 +274,7 @@ main {
     display: flex;
     justify-content: space-between;
     gap: 40px;
-    padding-top: 30px;
-    border-radius: 6px;
+    padding-top: 20px;
     transition: background-color 125ms ease, color 125ms ease-in-out;
 }
 
@@ -424,6 +455,41 @@ main {
     background-color: #0D1130;
 }
 
+footer {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: #1b53ba;
+    margin-top: 70px;
+}
+
+.social_media_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.social_media {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: invert(100%) brightness(200%);
+    transition: filter 125ms ease;
+}
+
+.social_media.discord_link {
+    width: 37px;
+    height: 37px;
+}
+
+.social_media:hover,
+.social_media:focus {
+    filter: drop-shadow(0px 0px 5px #f7f5f3);
+}
 
 
 

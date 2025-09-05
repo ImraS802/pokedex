@@ -66,11 +66,21 @@ function updateOverlayContent() {
 
 function getStats(singlePokemon) {
   return {
-    hp: singlePokemon.stats.find((s) => s.stat.name === 'hp').base_stat,
-    attack: singlePokemon.stats.find((s) => s.stat.name === 'attack').base_stat,
-    defense: singlePokemon.stats.find((s) => s.stat.name === 'defense')
-      .base_stat,
-    speed: singlePokemon.stats.find((s) => s.stat.name === 'speed').base_stat,
+    hp: singlePokemon.stats.find(function (elementInArray) {
+      return elementInArray.stat.name === 'hp';
+    }).base_stat,
+
+    attack: singlePokemon.stats.find(function (elementInArray) {
+      return elementInArray.stat.name === 'attack';
+    }).base_stat,
+
+    defense: singlePokemon.stats.find(function (elementInArray) {
+      return elementInArray.stat.name === 'defense';
+    }).base_stat,
+
+    speed: singlePokemon.stats.find(function (elementInArray) {
+      return elementInArray.stat.name === 'speed';
+    }).base_stat,
   };
 }
 
