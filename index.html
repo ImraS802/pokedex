@@ -29,7 +29,7 @@
         <div class="search_container">
             <div class="search_bar">
                 <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()"
-                    onkeydown="if(event.key==='Enter') handleSearch()">
+                    onkeydown="handleSearch()">
                 <button id="searchBtn" onclick="handleSearch()" disabled>Search</button>
             </div>
             <p class="search_text">Search Pokémon via first 3 letters</p>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="load_more_container">
-                <button onclick="loadNextPokemons()" class="load_more_btn" id="loadMoreBtn">Load More</button>
+                <button onclick="loadMoreOrBack()" class="load_more_btn" id="loadMoreBtn">Load More</button>
             </div>
         </main>
     </div>

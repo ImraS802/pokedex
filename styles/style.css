@@ -64,9 +64,7 @@ header {
     font-size: 16px;
     border: 2px solid #1b53ba;
     border-left: none;
-    /* merge with input */
     border-radius: 0 20px 20px 0;
-    /* rounded right */
     background-color: #1b53ba;
     color: white;
     cursor: pointer;
@@ -86,7 +84,7 @@ header {
 .search_text {
     font-size: 16px;
     color: white;
-    margin: 0;
+    margin: 0 0 0 15px;
 }
 
 .single_pk_card_small {
@@ -212,6 +210,7 @@ header {
 }
 
 .load_more_btn {
+    display: none;
     background-color: #1b53ba;
     color: white;
     font-weight: bold;
@@ -239,9 +238,12 @@ header {
     border-radius: 50%;
     width: 20px;
     height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
     animation: spin 1s linear infinite;
-    display: inline-block;
-    vertical-align: middle;
+    flex-shrink: 0;
 }
 
 .container_spinner {

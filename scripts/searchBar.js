@@ -3,7 +3,7 @@ let isSearching = false;
 function toggleSearchButton() {
   const query = document.getElementById('searchInput').value.trim();
   const searchBtn = document.getElementById('searchBtn');
-  searchBtn.disabled = query.length < 3; // enable only when 3+ chars
+  searchBtn.disabled = query.length < 3;
 }
 
 async function handleSearch() {
@@ -22,6 +22,7 @@ async function handleSearch() {
   let filteredNames = namesPokemons.filter((p) =>
     p.name.toLowerCase().startsWith(query)
   );
+
   let filteredData = [];
   for (let pokemon of filteredNames) {
     let existing = dataPokemons.find((p) => p.name === pokemon.name);
@@ -38,9 +39,12 @@ async function handleSearch() {
 
 function loadMoreOrBack() {
   let loadMoreButton = document.getElementById('loadMoreBtn');
+  let searchInput = document.getElementById('searchInput');
+
   if (isSearching) {
-    document.getElementById('searchInput').value = '';
-    toggleSearchButton();
+    searchInput.value = '';
+    document.getElementById('searchBtn').disabled = true;
+
     isSearching = false;
     renderPkSmallCards(dataPokemons.slice(0, limit));
     loadMoreButton.innerHTML = 'Load More';

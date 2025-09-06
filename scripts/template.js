@@ -1,9 +1,10 @@
 function getHTMLForSmallPkCards(singlePokemon, i) {
   let firstTypeColorBg = singlePokemon.types[0].type.name;
+  const displayId = singlePokemon.id;
   return `
     <div class="single_pk_card_small">
         <div class="id_name">
-            <div class="pk_id">#${i + 1}</div>
+            <div class="pk_id">#${displayId}</div>
             <div class="pk_name">${singlePokemon.name}</div>
         </div>
         <img src="${

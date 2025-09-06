@@ -7,6 +7,8 @@ const maxPokemons = 60;
 async function init() {
   await fetchNextBatch();
   renderPkSmallCards(dataPokemons.slice(0, limit));
+  const loadMoreButton = document.getElementById('loadMoreBtn');
+  loadMoreButton.style.display = 'block';
 }
 
 function showLoadingState(buttonForLoading) {
@@ -70,13 +72,25 @@ async function fetchPokemonNames() {
   }
 }
 
-async function renderPkSmallCards(pokemonList) {
+function renderPkSmallCards(list) {
   let smallCardsContainer = document.getElementById('smallPkCards');
   smallCardsContainer.innerHTML = '';
 
-  for (let i = 0; i < pokemonList.length; i++) {
-    let singlePokemon = pokemonList[i];
-    smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
+  for (let i = 0; i < list.length; i++) {
+    let singlePokemon = list[i];
+
+    // find this Pokémon's global index inside dataPokemons
+    const globalIndex = dataPokemons.findIndex(
+      (p) => p && p.name === singlePokemon.name
+    );
+
+    // use global index if found, otherwise fallback to local i
+    const indexForOverlay = globalIndex !== -1 ? globalIndex : i;
+
+    smallCardsContainer.innerHTML += getHTMLForSmallPkCards(
+      singlePokemon,
+      indexForOverlay
+    );
   }
 }
 
