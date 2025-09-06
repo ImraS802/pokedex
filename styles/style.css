@@ -206,6 +206,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-top: 40px;
 }
 
@@ -594,6 +595,16 @@ a.credit_links {
     color: #105ce9;
     text-decoration: underline;
 }
+
+.no_results_found {
+    display: none;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
 
 
 

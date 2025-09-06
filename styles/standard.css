@@ -8,4 +8,11 @@
 
 body {
     background-color: #0D1130;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    height: 100%;
 }

@@ -79,12 +79,10 @@ function renderPkSmallCards(list) {
   for (let i = 0; i < list.length; i++) {
     let singlePokemon = list[i];
 
-    // find this Pokémon's global index inside dataPokemons
     const globalIndex = dataPokemons.findIndex(
       (p) => p && p.name === singlePokemon.name
     );
 
-    // use global index if found, otherwise fallback to local i
     const indexForOverlay = globalIndex !== -1 ? globalIndex : i;
 
     smallCardsContainer.innerHTML += getHTMLForSmallPkCards(

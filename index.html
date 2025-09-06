@@ -28,8 +28,7 @@
         </div>
         <div class="search_container">
             <div class="search_bar">
-                <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()"
-                    onkeydown="handleSearch()">
+                <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()">
                 <button id="searchBtn" onclick="handleSearch()" disabled>Search</button>
             </div>
             <p class="search_text">Search Pokémon via first 3 letters</p>
@@ -61,6 +60,7 @@
             </div>
 
             <div class="load_more_container">
+                <p id="noResultsMsg" class="no_results_found">No Results Found</p>
                 <button onclick="loadMoreOrBack()" class="load_more_btn" id="loadMoreBtn">Load More</button>
             </div>
         </main>

@@ -14,6 +14,7 @@ async function handleSearch() {
     isSearching = false;
     renderPkSmallCards(dataPokemons.slice(0, limit));
     loadMoreButton.innerHTML = 'Load More';
+    noResultsMsg.style.display = 'none';
     return;
   }
 
@@ -22,6 +23,15 @@ async function handleSearch() {
   let filteredNames = namesPokemons.filter((p) =>
     p.name.toLowerCase().startsWith(query)
   );
+
+  if (filteredNames.length === 0) {
+    renderPkSmallCards([]); // clear cards
+    loadMoreButton.innerHTML = 'Back to Homepage';
+    noResultsMsg.style.display = 'block'; // show "No Results"
+    return;
+  } else {
+    noResultsMsg.style.display = 'none'; // hide message
+  }
 
   let filteredData = [];
   for (let pokemon of filteredNames) {
