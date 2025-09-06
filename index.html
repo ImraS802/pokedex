@@ -13,6 +13,7 @@
     <script src="./scripts/smallCards.js"></script>
     <script src="./scripts/bigCards.js"></script>
     <script src="./scripts/template.js"></script>
+    <script src="./scripts/searchBar.js"></script>
 </head>
 
 <body onload="init()">
@@ -24,6 +25,14 @@
                     <div></div> - All your favorite Pokémons in one place
                 </span>
             </div>
+        </div>
+        <div class="search_container">
+            <div class="search_bar">
+                <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()"
+                    onkeydown="if(event.key==='Enter') handleSearch()">
+                <button id="searchBtn" onclick="handleSearch()" disabled>Search</button>
+            </div>
+            <p class="search_text">Search Pokémon via first 3 letters</p>
         </div>
     </header>
     <div class="content_limitation_main">

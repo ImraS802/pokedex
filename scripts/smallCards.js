@@ -6,7 +6,7 @@ const maxPokemons = 60;
 
 async function init() {
   await fetchNextBatch();
-  renderPkSmallCards(dataPokemons);
+  renderPkSmallCards(dataPokemons.slice(0, limit));
 }
 
 function showLoadingState(buttonForLoading) {
@@ -70,12 +70,12 @@ async function fetchPokemonNames() {
   }
 }
 
-async function renderPkSmallCards() {
+async function renderPkSmallCards(pokemonList) {
   let smallCardsContainer = document.getElementById('smallPkCards');
   smallCardsContainer.innerHTML = '';
 
-  for (let i = 0; i < namesPokemons.length; i++) {
-    let singlePokemon = dataPokemons[i];
+  for (let i = 0; i < pokemonList.length; i++) {
+    let singlePokemon = pokemonList[i];
     smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
   }
 }
