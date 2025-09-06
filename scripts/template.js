@@ -1,10 +1,9 @@
 function getHTMLForSmallPkCards(singlePokemon, i) {
   let firstTypeColorBg = singlePokemon.types[0].type.name;
-  const displayId = singlePokemon.id;
   return `
     <div class="single_pk_card_small">
         <div class="id_name">
-            <div class="pk_id">#${displayId}</div>
+            <div class="pk_id">#${i + 1}</div>
             <div class="pk_name">${singlePokemon.name}</div>
         </div>
         <img src="${
@@ -33,7 +32,7 @@ function getTypesHTML(singlePokemon) {
 function getHTMLForOverlayStats(stats) {
   return `
     <div class="stats_container">
-        <div class="stats_text stat_hp"><strong class="stat_label">HP:</strong><span class="stat_value">
+        <div class="stats_text stat_hp"><strong class="stat_label">Health Points:</strong><span class="stat_value">
                 ${stats.hp}</span></div>
         <div class="stats_text"><strong class="stat_label">Attack:</strong><span class="stat_value">
                 ${stats.attack}</span></div>

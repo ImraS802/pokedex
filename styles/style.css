@@ -410,7 +410,8 @@ main {
     width: 40vw;
     max-height: 90vh;
     padding: 10px 80px;
-    border-radius: 10px
+    border-radius: 10px;
+    background-color: #0D1130;
 }
 
 .overlay_image {
@@ -431,7 +432,7 @@ main {
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 5px 0;
     font-size: 24px;
     color: white;
     width: 100%;

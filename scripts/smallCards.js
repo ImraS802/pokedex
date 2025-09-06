@@ -6,26 +6,7 @@ const maxPokemons = 60;
 
 async function init() {
   await fetchNextBatch();
-  renderPkSmallCards(dataPokemons.slice(0, limit));
-  const loadMoreButton = document.getElementById('loadMoreBtn');
-  loadMoreButton.style.display = 'block';
-}
-
-function showLoadingState(buttonForLoading) {
-  buttonForLoading.disabled = true;
-  buttonForLoading.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
-                        alt="snail icon" 
-                        class="snail_img"></div>`;
-}
-
-function resetButtonState(buttonForLoading) {
-  buttonForLoading.disabled = false;
-  buttonForLoading.innerHTML = 'Load More';
-}
-
-function disableButtonNoMorePokemons(buttonForLoading) {
-  buttonForLoading.disabled = true;
-  buttonForLoading.innerHTML = 'No more Pokémons left';
+  renderPkSmallCards(dataPokemons);
 }
 
 async function fetchNextBatch() {
@@ -34,12 +15,11 @@ async function fetchNextBatch() {
   startAt += limit;
 }
 
-function createDelay(ms) {
-  return new Promise(function (resolve) {
-    setTimeout(function () {
-      resolve();
-    }, ms);
-  });
+function showLoadingState(buttonForLoading) {
+  buttonForLoading.disabled = true;
+  buttonForLoading.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
+                        alt="snail icon" 
+                        class="snail_img"></div>`;
 }
 
 async function loadNextPokemons() {
@@ -57,6 +37,24 @@ async function loadNextPokemons() {
   }
 }
 
+function createDelay(ms) {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve();
+    }, ms);
+  });
+}
+
+function resetButtonState(buttonForLoading) {
+  buttonForLoading.disabled = false;
+  buttonForLoading.innerHTML = 'Load More';
+}
+
+function disableButtonNoMorePokemons(buttonForLoading) {
+  buttonForLoading.disabled = true;
+  buttonForLoading.innerHTML = 'No more Pokémons left';
+}
+
 async function fetchPokemonNames() {
   try {
     let response = await fetch(
@@ -72,23 +70,13 @@ async function fetchPokemonNames() {
   }
 }
 
-function renderPkSmallCards(list) {
+async function renderPkSmallCards() {
   let smallCardsContainer = document.getElementById('smallPkCards');
   smallCardsContainer.innerHTML = '';
 
-  for (let i = 0; i < list.length; i++) {
-    let singlePokemon = list[i];
-
-    const globalIndex = dataPokemons.findIndex(
-      (p) => p && p.name === singlePokemon.name
-    );
-
-    const indexForOverlay = globalIndex !== -1 ? globalIndex : i;
-
-    smallCardsContainer.innerHTML += getHTMLForSmallPkCards(
-      singlePokemon,
-      indexForOverlay
-    );
+  for (let i = 0; i < namesPokemons.length; i++) {
+    let singlePokemon = dataPokemons[i];
+    smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
   }
 }
 
@@ -109,7 +97,6 @@ async function getDataOfPokemons(pokemonList) {
   for (let i = 0; i < newPokemons.length; i++) {
     let singlePokemon = newPokemons[i];
     let dataSinglePokemon = await fetchPokemonDataList(singlePokemon.url);
-
     dataPokemons.push(dataSinglePokemon);
   }
 
