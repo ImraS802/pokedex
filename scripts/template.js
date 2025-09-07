@@ -43,3 +43,12 @@ function getHTMLForOverlayStats(stats) {
     </div>
   `;
 }
+
+function getHTMLForSpinner() {
+  return `
+      <div class="container_spinner">
+        <span class="spinner"></span>
+          Loading... <img src="./assets/icons/snail.png" alt="snail icon" class="snail_img">
+       </div>
+  `;
+}

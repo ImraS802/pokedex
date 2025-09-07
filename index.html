@@ -18,20 +18,23 @@
 
 <body onload="init()">
     <header>
-        <div class="logo_title">
-            <img src="./assets/icons/pikachu.png" alt="Pikachu logo" class="logo">`;
-            <div class="text_block">
-                <h1>Pokedex</h1><span class="header_text">
-                    <div></div> - All your favorite Pokémons in one place
+        <div class="logo_search_container">
+            <div class="logo_title">
+                <div class="logo_pokedex">
+                    <img src="./assets/icons/pikachu.png" alt="Pikachu logo" class="logo">`;
+                    <h1>Pokedex</h1>
+                </div>
+                <span class="header_text">
+                    - All your favorite Pokémons in one place
                 </span>
             </div>
-        </div>
-        <div class="search_container">
-            <div class="search_bar">
-                <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()">
-                <button id="searchBtn" onclick="handleSearch()" disabled>Search</button>
+            <div class="search_container">
+                <div class="search_bar">
+                    <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()">
+                    <button id="searchBtn" onclick="searchPokemon()" disabled>Search</button>
+                </div>
+                <p class="search_text">Search Pokémon via first 3 letters</p>
             </div>
-            <p class="search_text">Search Pokémon via first 3 letters</p>
         </div>
     </header>
     <div class="content_limitation_main">
@@ -61,7 +64,7 @@
 
             <div class="load_more_container">
                 <p id="noResultsMsg" class="no_results_found">No Results Found</p>
-                <button onclick="loadMoreOrBack()" class="load_more_btn" id="loadMoreBtn">Load More</button>
+                <button onclick="loadNextPokemons()" class="load_more_btn" id="loadMoreBtn">Load More</button>
             </div>
         </main>
     </div>

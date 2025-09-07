@@ -11,8 +11,14 @@ h1 {
 .logo_title {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 20px 80px;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 80px 40px 80px;
+}
+
+.titel_middle {
+    display: flex;
+    align-items: center;
 }
 
 .text_block {
@@ -25,8 +31,9 @@ h1 {
     color: white;
     font-size: 20px;
     position: relative;
-    top: 2px;
+    top: 12px;
     margin-left: 10px;
+    text-align: center;
 }
 
 header {
@@ -39,8 +46,7 @@ header {
 .search_container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    /* align text nicely under input */
+    justify-content: center;
     gap: 6px;
 }
 
@@ -54,7 +60,6 @@ header {
     font-size: 16px;
     border: 2px solid #1b53ba;
     border-radius: 20px 0 0 20px;
-    /* rounded left */
     outline: none;
     width: 220px;
 }
@@ -211,7 +216,7 @@ header {
 }
 
 .load_more_btn {
-    display: none;
+    display: block;
     background-color: #1b53ba;
     color: white;
     font-weight: bold;
@@ -225,6 +230,10 @@ header {
     text-align: center;
     bottom: 30px;
     font-size: 24px;
+}
+
+#loadMoreBtn {
+    display: none;
 }
 
 .load_more_btn:disabled {
@@ -485,7 +494,7 @@ main {
     display: flex;
     justify-content: space-between;
     color: white;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: inherit;
     padding: 8px 12px;
 }
 
@@ -606,9 +615,17 @@ a.credit_links {
     margin-bottom: 80px;
 }
 
+.logo_search_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 
-
-
+.logo_pokedex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media(max-width: 1165px) {
     .overlay_dialog {
@@ -616,8 +633,70 @@ a.credit_links {
     }
 }
 
+@media(max-width: 1144px) {
+    .header_text {
+        margin-left: 5px;
+    }
+}
+
+@media(max-width: 978px) {
+    .header_text {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 930px) {
+    .header_text {
+        margin-left: 5px;
+    }
+}
+
+@media(max-width: 890px) {
+    .logo_title {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 730px) {
+    .logo_search_container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @media(max-width: 700px) {
     .overlay_dialog {
         width: 80vw;
+    }
+}
+
+@media(max-width: 390px) {
+    .social_media_container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width: 340px) {
+    .logo_title {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #searchInput {
+        padding: 7px 10px;
+    }
+
+    #searchBtn {
+        padding: 7px 10px;
+    }
+
+    .load_more_btn {
+        width: auto;
+        font-size: 24px;
     }
 }

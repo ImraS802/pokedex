@@ -7,6 +7,8 @@ const maxPokemons = 60;
 async function init() {
   await fetchNextBatch();
   renderPkSmallCards(dataPokemons);
+  let loadMoreButton = document.getElementById('loadMoreBtn');
+  loadMoreButton.style.display = 'block';
 }
 
 async function fetchNextBatch() {
@@ -17,9 +19,7 @@ async function fetchNextBatch() {
 
 function showLoadingState(buttonForLoading) {
   buttonForLoading.disabled = true;
-  buttonForLoading.innerHTML = `<div class="container_spinner"><span class="spinner"></span> Loading... <img src="./assets/icons/snail.png" 
-                        alt="snail icon" 
-                        class="snail_img"></div>`;
+  buttonForLoading.innerHTML = getHTMLForSpinner();
 }
 
 async function loadNextPokemons() {
@@ -74,7 +74,7 @@ async function renderPkSmallCards() {
   let smallCardsContainer = document.getElementById('smallPkCards');
   smallCardsContainer.innerHTML = '';
 
-  for (let i = 0; i < namesPokemons.length; i++) {
+  for (let i = 0; i < dataPokemons.length; i++) {
     let singlePokemon = dataPokemons[i];
     smallCardsContainer.innerHTML += getHTMLForSmallPkCards(singlePokemon, i);
   }
