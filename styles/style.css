@@ -426,9 +426,8 @@ main {
 .overlay_image {
     width: 200px;
     max-width: 100%;
-    min-height: 200px;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
     padding: 5px;
     border: 6px solid white;
@@ -698,5 +697,8 @@ a.credit_links {
     .load_more_btn {
         width: auto;
         font-size: 24px;
+        padding: 20px;
     }
+
+
 }

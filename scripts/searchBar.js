@@ -7,6 +7,10 @@ function toggleSearchButton() {
   } else {
     button.disabled = true;
   }
+
+  if (input.length === 0) {
+    resetHomeView();
+  }
 }
 
 function searchPokemon() {
@@ -84,4 +88,14 @@ function resetHomeView() {
 
   document.getElementById('searchInput').value = '';
   document.getElementById('searchBtn').disabled = true;
+}
+
+function handleSearchKey() {
+  let input = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  if (input.length >= 3) {
+    searchPokemon();
+  } else if (input.length === 0) {
+    resetHomeView();
+  }
 }

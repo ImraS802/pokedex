@@ -102,3 +102,15 @@ async function getDataOfPokemons(pokemonList) {
 
   return dataPokemons;
 }
+
+function getTypesHTML(singlePokemon) {
+  let typesHTML = '';
+  for (let j = 0; j < singlePokemon.types.length; j++) {
+    let typeName = singlePokemon.types[j].type.name;
+    let iconOfTypes = `
+      <img src="./assets/icons/${typeName}.png" alt="${typeName} icon" class="type_icon ${typeName}" title="${typeName}">`;
+
+    typesHTML += iconOfTypes + ' ';
+  }
+  return typesHTML.trim();
+}

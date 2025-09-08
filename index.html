@@ -30,7 +30,8 @@
             </div>
             <div class="search_container">
                 <div class="search_bar">
-                    <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()">
+                    <input type="text" id="searchInput" placeholder="Search Pokémon..." oninput="toggleSearchButton()"
+                        onkeyup="handleSearchKey()">
                     <button id="searchBtn" onclick="searchPokemon()" disabled>Search</button>
                 </div>
                 <p class="search_text">Search Pokémon via first 3 letters</p>
