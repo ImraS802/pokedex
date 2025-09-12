@@ -14,6 +14,8 @@
     <script src="./scripts/bigCards.js"></script>
     <script src="./scripts/template.js"></script>
     <script src="./scripts/searchBar.js"></script>
+    <script src="./scripts/barChart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="init()">
@@ -52,7 +54,11 @@
                         </p>
                         <img id="overlayImage" class="overlay_image" src="" alt="Enlarged image">
                         <div id="overlayTypes" class="overlay_types"></div>
-                        <div id="overlayStats" class="overlay_stats"></div>
+                        <!-- <div id="overlayStats" class="overlay_stats"></div> -->
+                        <div id="overlayStats" class="overlay_stats">
+                            <canvas id="statsChart"></canvas>
+                        </div>
+
                         <div class="sticky_arrows">
                             <button onclick="showPreviousImage()" class="button_previous"><img class="arrow_previous"
                                     src="./assets/icons/arrow_circle_left.svg" alt="Show previous card"></button>

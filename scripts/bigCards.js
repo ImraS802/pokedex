@@ -58,10 +58,13 @@ function updateOverlayContent() {
   overlayName.textContent = singlePokemon.name;
   overlayId.textContent = `#${singlePokemon.id}`;
 
-  let stats = getStats(singlePokemon);
-  overlayStats.innerHTML = getHTMLForOverlayStats(stats);
+  overlayStats.innerHTML = `<canvas id="statsChart"></canvas>`;
 
+  // types
   overlayTypes.innerHTML = getTypesHTML(singlePokemon);
+
+  // render bar chart with Chart.js
+  renderStatsChart(singlePokemon);
 }
 
 function getStats(singlePokemon) {
