@@ -42,7 +42,7 @@ function renderStatsChart(singlePokemon) {
     type: 'bar',
     data: data,
     options: {
-      indexAxis: 'y', // horizontal bars
+      indexAxis: 'y',
       responsive: true,
       plugins: {
         legend: {display: false},
