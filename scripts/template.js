@@ -1,7 +1,8 @@
 function getHTMLForSmallPkCards(singlePokemon, i) {
   let firstTypeColorBg = singlePokemon.types[0].type.name;
   return `
-    <div class="single_pk_card_small">
+    <div class="single_pk_card_small" onclick="toggleOverlay(${i})" tabindex="0"
+         onkeydown="if(event.key==='Enter' || event.key===' ') toggleOverlay(${i})">
         <div class="id_name">
             <div class="pk_id">#${i + 1}</div>
             <div class="pk_name">${singlePokemon.name}</div>

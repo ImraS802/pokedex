@@ -48,6 +48,7 @@ header {
     flex-direction: column;
     justify-content: center;
     gap: 6px;
+    margin-right: 80px;
 }
 
 .search_bar {
@@ -642,6 +643,10 @@ a.credit_links {
     .header_text {
         font-size: 16px;
     }
+
+    .logo_title {
+        flex-direction: column;
+    }
 }
 
 @media(max-width: 930px) {
@@ -650,17 +655,15 @@ a.credit_links {
     }
 }
 
-@media(max-width: 890px) {
-    .logo_title {
-        flex-direction: column;
-    }
-}
-
 @media(max-width: 730px) {
     .logo_search_container {
         width: 100%;
         flex-direction: column;
         align-items: center;
+    }
+
+    .search_container {
+        margin-right: 0;
     }
 }
 
